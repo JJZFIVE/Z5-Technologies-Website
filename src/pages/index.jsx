@@ -3,7 +3,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import clsx from 'clsx'
 
-import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
 import {
@@ -22,7 +21,7 @@ import image4 from '@/images/photos/image-4.jpg'
 import image5 from '@/images/photos/image-5.jpg'
 import { formatDate } from '@/lib/formatDate'
 import { generateRssFeed } from '@/lib/generateRssFeed'
-import { getAllArticles } from '@/lib/getAllArticles'
+import { getAllProjects } from '@/lib/getAllProjects'
 import { BeakerIcon } from '@heroicons/react/24/outline'
 
 function MailIcon(props) {
@@ -84,16 +83,16 @@ function ArrowDownIcon(props) {
   )
 }
 
-function Article({ article }) {
+function Project({ project }) {
   return (
-    <Card as="article">
-      <Card.Title href={`/articles/${article.slug}`}>
-        {article.title}
+    <Card as="project">
+      <Card.Title href={`/projects/${project.slug}`}>
+        {project.title}
       </Card.Title>
-      <Card.Eyebrow as="time" dateTime={article.date} decorate>
-        {formatDate(article.date)}
+      <Card.Eyebrow as="time" dateTime={project.date} decorate>
+        {formatDate(project.date)}
       </Card.Eyebrow>
-      <Card.Description>{article.description}</Card.Description>
+      <Card.Description>{project.description}</Card.Description>
       <Card.Cta>Learn More</Card.Cta>
     </Card>
   )
@@ -168,7 +167,7 @@ function Resume() {
       company: 'Ozura',
       title: 'Software / Blockchain Engineer',
       logo: ozura,
-      time: 'Summer 2022',
+      time: 'Su 2022',
       link: 'https://ozura.io/',
     },
     {
@@ -257,7 +256,7 @@ function Photos() {
   )
 }
 
-export default function Home({ articles }) {
+export default function Home({ projects }) {
   return (
     <>
       <Head>
@@ -312,8 +311,8 @@ export default function Home({ articles }) {
             <h2 className="text-xl font-bold tracking-tight text-zinc-700 dark:text-zinc-300 sm:text-2xl">
               Technical Projects
             </h2>
-            {articles.map((article) => (
-              <Article key={article.slug} article={article} />
+            {projects.map((project) => (
+              <Project key={project.slug} project={project} />
             ))}
           </div>
           <div className="space-y-10 lg:pl-16 xl:pl-24">
@@ -334,7 +333,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      articles: (await getAllArticles())
+      projects: (await getAllProjects())
         .slice(0, 4)
         .map(({ component, ...meta }) => meta),
     },

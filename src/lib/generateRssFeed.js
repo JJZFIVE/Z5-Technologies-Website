@@ -2,10 +2,10 @@ import ReactDOMServer from 'react-dom/server'
 import { Feed } from 'feed'
 import { mkdir, writeFile } from 'fs/promises'
 
-import { getAllArticles } from './getAllArticles'
+import { getAllProjects } from './getAllProjects'
 
 export async function generateRssFeed() {
-  let articles = await getAllArticles()
+  let projects = await getAllProjects()
   let siteUrl = process.env.NEXT_PUBLIC_SITE_URL
   let author = {
     name: 'Joe Zakielarz',
@@ -27,21 +27,21 @@ export async function generateRssFeed() {
     },
   })
 
-  for (let article of articles) {
-    let url = `${siteUrl}/articles/${article.slug}`
+  for (let project of projects) {
+    let url = `${siteUrl}/projects/${project.slug}`
     let html = ReactDOMServer.renderToStaticMarkup(
-      <article.component isRssFeed />
+      <project.component isRssFeed />
     )
 
     feed.addItem({
-      title: article.title,
+      title: project.title,
       id: url,
       link: url,
-      description: article.description,
+      description: project.description,
       content: html,
       author: [author],
       contributor: [author],
-      date: new Date(article.date),
+      date: new Date(project.date),
     })
   }
 
