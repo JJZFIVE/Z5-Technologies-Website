@@ -8,14 +8,13 @@ import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
 import {
   GitHubIcon,
-  InstagramIcon,
+  SoundCloudIcon,
   LinkedInIcon,
   TwitterIcon,
 } from '@/components/SocialIcons'
-import logoAirbnb from '@/images/logos/airbnb.svg'
-import logoFacebook from '@/images/logos/facebook.svg'
-import logoPlanetaria from '@/images/logos/planetaria.svg'
-import logoStarbucks from '@/images/logos/starbucks.svg'
+import rightHear from '@/images/logos/righthear.png'
+import rspctbasketball from '@/images/logos/rspctbasketball.png'
+import ozura from '@/images/logos/ozura.png'
 import image1 from '@/images/photos/image-1.jpg'
 import image2 from '@/images/photos/image-2.jpg'
 import image3 from '@/images/photos/image-3.jpg'
@@ -24,6 +23,7 @@ import image5 from '@/images/photos/image-5.jpg'
 import { formatDate } from '@/lib/formatDate'
 import { generateRssFeed } from '@/lib/generateRssFeed'
 import { getAllArticles } from '@/lib/getAllArticles'
+import { BeakerIcon } from '@heroicons/react/24/outline'
 
 function MailIcon(props) {
   return (
@@ -94,7 +94,7 @@ function Article({ article }) {
         {formatDate(article.date)}
       </Card.Eyebrow>
       <Card.Description>{article.description}</Card.Description>
-      <Card.Cta>Read article</Card.Cta>
+      <Card.Cta>Learn More</Card.Cta>
     </Card>
   )
 }
@@ -107,67 +107,83 @@ function SocialLink({ icon: Icon, ...props }) {
   )
 }
 
-function Newsletter() {
+// function Newsletter() {
+//   return (
+//     <form
+//       action="/thank-you"
+//       className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40"
+//     >
+//       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+//         <MailIcon className="h-6 w-6 flex-none" />
+//         <span className="ml-3">Stay up to date</span>
+//       </h2>
+//       <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+//         Get notified when I publish something new, and unsubscribe at any time.
+//       </p>
+//       <div className="mt-6 flex">
+//         <input
+//           type="email"
+//           placeholder="Email address"
+//           aria-label="Email address"
+//           required
+//           className="min-w-0 flex-auto appearance-none rounded-md border border-zinc-900/10 bg-white px-3 py-[calc(theme(spacing.2)-1px)] shadow-md shadow-zinc-800/5 placeholder:text-zinc-400 focus:border-teal-500 focus:outline-none focus:ring-4 focus:ring-teal-500/10 dark:border-zinc-700 dark:bg-zinc-700/[0.15] dark:text-zinc-200 dark:placeholder:text-zinc-500 dark:focus:border-teal-400 dark:focus:ring-teal-400/10 sm:text-sm"
+//         />
+//         <Button type="submit" className="ml-4 flex-none">
+//           Join
+//         </Button>
+//       </div>
+//     </form>
+//   )
+// }
+
+function BetaTest() {
   return (
-    <form
-      action="/thank-you"
-      className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40"
-    >
+    <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-        <MailIcon className="h-6 w-6 flex-none" />
-        <span className="ml-3">Stay up to date</span>
+        <BeakerIcon className="h-6 w-6 text-gray-400" />
+        <span className="ml-3 text-sm">Beta test my newest product!</span>
       </h2>
       <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-        Get notified when I publish something new, and unsubscribe at any time.
+        I&apos;m hacking away at a new product that I&apos;m currently calling
+        FitScript. It&apos;s a personal fitness trainer powered by AI that lives
+        right in your text messages. I&apos;d love to get your feedback on it!
       </p>
-      <div className="mt-6 flex">
-        <input
-          type="email"
-          placeholder="Email address"
-          aria-label="Email address"
-          required
-          className="min-w-0 flex-auto appearance-none rounded-md border border-zinc-900/10 bg-white px-3 py-[calc(theme(spacing.2)-1px)] shadow-md shadow-zinc-800/5 placeholder:text-zinc-400 focus:border-teal-500 focus:outline-none focus:ring-4 focus:ring-teal-500/10 dark:border-zinc-700 dark:bg-zinc-700/[0.15] dark:text-zinc-200 dark:placeholder:text-zinc-500 dark:focus:border-teal-400 dark:focus:ring-teal-400/10 sm:text-sm"
-        />
-        <Button type="submit" className="ml-4 flex-none">
-          Join
-        </Button>
+      <div className="text w-full pt-4 text-sm">
+        <a
+          target="_blank"
+          rel="noreferrer"
+          href="https://fit-script-website.vercel.app/"
+          className="text-black underline dark:text-white"
+        >
+          Find The Website Here!
+        </a>
       </div>
-    </form>
+    </div>
   )
 }
 
 function Resume() {
   let resume = [
     {
-      company: 'Planetaria',
-      title: 'CEO',
-      logo: logoPlanetaria,
-      start: '2019',
-      end: {
-        label: 'Present',
-        dateTime: new Date().getFullYear(),
-      },
+      company: 'Ozura',
+      title: 'Software / Blockchain Engineer',
+      logo: ozura,
+      time: 'Summer 2022',
+      link: 'https://ozura.io/',
     },
     {
-      company: 'Airbnb',
-      title: 'Product Designer',
-      logo: logoAirbnb,
-      start: '2014',
-      end: '2019',
+      company: 'RSPCT Basketball',
+      title: 'Data Science Engineer',
+      logo: rspctbasketball,
+      time: 'Wi 2021 - Sp 2022',
+      link: 'https://twitter.com/rspctbasketball',
     },
     {
-      company: 'Facebook',
-      title: 'iOS Software Engineer',
-      logo: logoFacebook,
-      start: '2011',
-      end: '2014',
-    },
-    {
-      company: 'Starbucks',
-      title: 'Shift Supervisor',
-      logo: logoStarbucks,
-      start: '2008',
-      end: '2011',
+      company: 'Right-Hear',
+      title: 'Strategy Consultant',
+      logo: rightHear,
+      time: 'Sp 2021 - Su 2021',
+      link: 'https://www.right-hear.com/',
     },
   ]
 
@@ -175,13 +191,23 @@ function Resume() {
     <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
         <BriefcaseIcon className="h-6 w-6 flex-none" />
-        <span className="ml-3">Work</span>
+        <span className="ml-3">Work Experience</span>
       </h2>
       <ol className="mt-6 space-y-4">
         {resume.map((role, roleIndex) => (
           <li key={roleIndex} className="flex gap-4">
-            <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-              <Image src={role.logo} alt="" className="h-7 w-7" unoptimized />
+            <div
+              type="button"
+              className=" relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0"
+            >
+              <a href={role.link} target="_blank" rel="noreferrer">
+                <Image
+                  src={role.logo}
+                  alt=""
+                  className="h-7 w-7 rounded-full"
+                  unoptimized
+                />
+              </a>
             </div>
             <dl className="flex flex-auto flex-wrap gap-x-2">
               <dt className="sr-only">Company</dt>
@@ -193,28 +219,13 @@ function Resume() {
                 {role.title}
               </dd>
               <dt className="sr-only">Date</dt>
-              <dd
-                className="ml-auto text-xs text-zinc-400 dark:text-zinc-500"
-                aria-label={`${role.start.label ?? role.start} until ${
-                  role.end.label ?? role.end
-                }`}
-              >
-                <time dateTime={role.start.dateTime ?? role.start}>
-                  {role.start.label ?? role.start}
-                </time>{' '}
-                <span aria-hidden="true">—</span>{' '}
-                <time dateTime={role.end.dateTime ?? role.end}>
-                  {role.end.label ?? role.end}
-                </time>
+              <dd className="ml-auto text-xs text-zinc-400 dark:text-zinc-500">
+                <time dateTime={role.time}>{role.time}</time>{' '}
               </dd>
             </dl>
           </li>
         ))}
       </ol>
-      <Button href="#" variant="secondary" className="group mt-6 w-full">
-        Download CV
-        <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
-      </Button>
     </div>
   )
 }
@@ -250,59 +261,64 @@ export default function Home({ articles }) {
   return (
     <>
       <Head>
-        <title>
-          Spencer Sharp - Software designer, founder, and amateur astronaut
-        </title>
+        <title>Joe Zakielarz</title>
         <meta
           name="description"
-          content="I’m Spencer, a software designer and entrepreneur based in New York City. I’m the founder and CEO of Planetaria, where we develop technologies that empower regular people to explore space on their own terms."
+          content="I'm Joe, and I'm a software engineer in my junior year at Duke University. I'm a hustler and a grinder and love building B2C products."
         />
       </Head>
       <Container className="mt-9">
         <div className="max-w-2xl">
-          <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-            Software designer, founder, and amateur astronaut.
+          <h1 className="text-4xl font-bold tracking-tight text-zinc-700 dark:text-zinc-300 sm:text-5xl">
+            <span className="text-zinc-900 dark:text-zinc-100">
+              Joe Zakielarz:
+            </span>{' '}
+            Software engineer, future founder, and music producer.
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I’m Spencer, a software designer and entrepreneur based in New York
-            City. I’m the founder and CEO of Planetaria, where we develop
-            technologies that empower regular people to explore space on their
-            own terms.
+            I&apos;m Joe, and I&apos;m a software engineer in my junior year at
+            Duke University. I love building B2C products and am currently
+            looking to make an impact in a fast-paced environment during the
+            Summer of 2023.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
-              href="https://twitter.com"
+              href="https://twitter.com/joezakielarz"
               aria-label="Follow on Twitter"
               icon={TwitterIcon}
             />
             <SocialLink
-              href="https://instagram.com"
-              aria-label="Follow on Instagram"
-              icon={InstagramIcon}
-            />
-            <SocialLink
-              href="https://github.com"
+              href="https://github.com/JJZFIVE"
               aria-label="Follow on GitHub"
               icon={GitHubIcon}
             />
             <SocialLink
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/joezakielarz5"
               aria-label="Follow on LinkedIn"
               icon={LinkedInIcon}
+            />
+            <SocialLink
+              href="https://soundcloud.com/intrynzic/tracks"
+              aria-label="Follow on SoundCloud"
+              icon={SoundCloudIcon}
             />
           </div>
         </div>
       </Container>
-      <Photos />
-      <Container className="mt-24 md:mt-28">
+      {/* <Photos /> */}
+      <Container className="mt-12 md:mt-12">
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
           <div className="flex flex-col gap-16">
+            <h2 className="text-xl font-bold tracking-tight text-zinc-700 dark:text-zinc-300 sm:text-2xl">
+              Technical Projects
+            </h2>
             {articles.map((article) => (
               <Article key={article.slug} article={article} />
             ))}
           </div>
           <div className="space-y-10 lg:pl-16 xl:pl-24">
-            <Newsletter />
+            {/* <Newsletter /> */}
+            <BetaTest />
             <Resume />
           </div>
         </div>
