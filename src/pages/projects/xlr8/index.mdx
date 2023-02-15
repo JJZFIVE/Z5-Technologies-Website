@@ -1,10 +1,15 @@
 import { ArticleLayout } from '@/components/ArticleLayout'
 import Image from 'next/image'
+import xlr8Jeep from './xlr8Jeep.png'
+import xlr8Cybertruck from './xlr8Cybertruck.png'
+import xlr8Military from './xlr8Military.png'
+import xlr8Optimus from './xlr8Optimus.png'
 
 export const meta = {
   author: 'Joe Zakielarz',
   date: 'Spring 2022',
   dateForOrdering: '2022-04-01',
+  header: 'XLR8',
   title: 'XLR8: A Blockchain-Powered Car Racing Game',
   description:
     'NFT racing game where users "fuse" component NFTs to create their own unique cars. Wrote the smart contracts and deployed custom Chainlink node on AWS EC2 with Docker and used AWS Lambda for secure data link to MongoDB.',
@@ -12,23 +17,33 @@ export const meta = {
 
 export default (props) => <ArticleLayout meta={meta} {...props} />
 
-Last summer, I slept on my friend's inflatable couch in Miami and worked all day every day on BlockStreet. It's an NFT Marketplace on Ethereum and Polygon with social functionality; zero-code, full collection minting with metadata pinned on IPFS; wallet aggregation and user account creation; and auctions, listings, transfers, burns, and more.
+I teamed up with a few friends at Duke to build a blockchain-powered car racing game called XLR8.
+In this game, users acquire individual car component NFTs and "fuse" them to create their own unique car NFTs.
+I wrote the custom ERC721 and ERC1155 smart contracts, deployed a custom Chainlink node on AWS EC2 with Docker,
+and used AWS Lambda for a secure on-to-off-chain data link to MongoDB.
+XLR8 remains as one of the most technically ambitious NFT projects to date.
 
-_Note: the backend is down, but the frontend is still up_
+<a target="_blank" rel="noreferrer" href="https://github.com/JJZFIVE/xlr8">
+  Check out the repo here
+</a>
 
-<div align="center">_Above: the homepage_</div>
+<Image src={xlr8Cybertruck} alt="XLR8 Cybertruck" draggable={false} />
+<div align="center">_Above: XLR8 Cybertruck_</div>
 
-## Features
+## Technicals
 
-I can't actually go into that much detail about how I built BlockStreet because it's currently being sold for an
-undisclosed amount, but I can tell you about some of the features. BlockStreet offers all of the standard operations
-you'd expect on any marketplace – transferring, auctioning, bidding, listing, buying, burning, etc.
-It includes the easiest way to launch a collection I've ever seen, which is a huge deal for artists and collectors:
-there's no code required, and the metadata is pinned on IPFS. You can make a BlockStreet account with any one of over five
-crypto wallets (ex: Metamask) and you can connect as many as you want to that account. You can follow other BlockStreet users
-and see their collections and activity on the Instagram-style following feed.
+The XLR8 smart contracts are written in Solidity and deployed on the Ethereum mainnet.
+The most challenging part of the project was restraining people from finding all of the premade cars before people "found" them by fusing the
+appropriate components together (IPFS folders are public, so if you put them all together, anyone can
+scan the whole folder). To do this, I uploaded all of the premade cars to IPFS in <span className="underline">separate</span> folders,
+stored all of their IPFS CIDs in MongoDB, and then built a custom Chainlink node to pull the CID from MongoDB
+when a user fused their cars. This system required launching a custom Chainlink node on AWS EC2 with Docker,
+and then building a Chainlink External Adapter to trigger the query from on-chain securely, which I
+deployed on AWS Lambda. The Chainlink node code is open source <a target="_blank" rel="noreferrer" href="https://docs.chain.link/chainlink-nodes/v1/running-a-chainlink-node/">on their website</a>,
+and my External Adapter code is open source and <a target="_blank" rel="noreferrer" href="https://github.com/JJZFIVE/xlr8-external-adapter">can be found here.</a>
 
-<div align="center">_Above: the NFT page_</div>
+<Image src={xlr8Jeep} alt="XLR8 Jeep" draggable={false} />
+<div align="center">_Above: XLR8 Jeep_</div>
 
 ## Tools
 
@@ -40,6 +55,10 @@ I built XLR8 with this stack:
 4. AWS EC2
 5. Docker
 6. Chainlink
+7. IPFS
+
+<Image src={xlr8Optimus} alt="XLR8 Optimus Prime" draggable={false} />
+<div align="center">_Above: XLR8 Optimus Prime_</div>
 
 <div align="center">_Below: full car smart contract for XLR8 cars_</div>
 ```c
@@ -66,14 +85,14 @@ using Strings for uint256;
     string public baseURI;
     uint256 public offset = 0;
 
-    string public constant PROVENANCE = ""; // Hardcode this at launch
+    string public constant PROVENANCE = "8sfeew8_3r283LJFSDF8nfsf3n"; // Hardcode this at launch
 
     event NFTCreated (
         uint256 indexed tokenId,
         address indexed creatorAddress
     );
 
-    constructor(uint256 _maxSupply) ERC721("REPLACE ME WITH NAME", "REPLACE ME WITH TICKER") {
+    constructor(uint256 _maxSupply) ERC721("XLR8 FULL CAR", "XLR8") {
         maxSupply = _maxSupply;
         baseURI = "Pre-reveal mystery URI here"; // Pre-reveal mystery URI
     }
@@ -113,7 +132,6 @@ using Strings for uint256;
         }
     }
 
-    // Must discuss with harkness team if we want this to be a 1 time thing
     function setBaseURI(string calldata _baseURI) internal onlyOwner {
         baseURI = _baseURI;
     }

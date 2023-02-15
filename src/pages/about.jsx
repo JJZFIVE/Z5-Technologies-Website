@@ -72,13 +72,13 @@ export default function About() {
                 I&apos;ve been hooked on writing software since I built my first
                 iPhone app in 5th grade called Bomb Blitz where the goal was to
                 tap the screen to &quot;diffuse&quot; bombs falling from every
-                edge of your phone. Since then, my skills have (thankfully)
+                edge of your phone. Since then, my skills have (somewhat)
                 improved... but the same eager curiosity has remained.
               </p>
               <p>
                 I spent the summer of 2022 working in Miami building an NFT
                 marketplace called{' '}
-                <Link href="/blockstreet" legacyBehavior>
+                <Link href="/projects/blockstreet" legacyBehavior>
                   <a className="text-zinc-700 underline dark:text-zinc-300">
                     BlockStreet
                   </a>

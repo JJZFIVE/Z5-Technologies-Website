@@ -22,7 +22,7 @@ function Project({ project }) {
           {project.date}
         </Card.Eyebrow>
         <Card.Description>{project.description}</Card.Description>
-        <Card.Cta>Read project</Card.Cta>
+        <Card.Cta>Learn More</Card.Cta>
       </Card>
       <Card.Eyebrow
         as="time"
