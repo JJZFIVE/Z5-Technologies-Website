@@ -1,0 +1,125 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+
+export const meta = {
+  author: 'Joe Zakielarz',
+  date: 'Spring 2022',
+  dateForOrdering: '2022-04-01',
+  title: 'XLR8: A Blockchain-Powered Car Racing Game',
+  description:
+    'NFT racing game where users "fuse" component NFTs to create their own unique cars. Wrote the smart contracts and deployed custom Chainlink node on AWS EC2 with Docker and used AWS Lambda for secure data link to MongoDB.',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+Last summer, I slept on my friend's inflatable couch in Miami and worked all day every day on BlockStreet. It's an NFT Marketplace on Ethereum and Polygon with social functionality; zero-code, full collection minting with metadata pinned on IPFS; wallet aggregation and user account creation; and auctions, listings, transfers, burns, and more.
+
+_Note: the backend is down, but the frontend is still up_
+
+<div align="center">_Above: the homepage_</div>
+
+## Features
+
+I can't actually go into that much detail about how I built BlockStreet because it's currently being sold for an
+undisclosed amount, but I can tell you about some of the features. BlockStreet offers all of the standard operations
+you'd expect on any marketplace – transferring, auctioning, bidding, listing, buying, burning, etc.
+It includes the easiest way to launch a collection I've ever seen, which is a huge deal for artists and collectors:
+there's no code required, and the metadata is pinned on IPFS. You can make a BlockStreet account with any one of over five
+crypto wallets (ex: Metamask) and you can connect as many as you want to that account. You can follow other BlockStreet users
+and see their collections and activity on the Instagram-style following feed.
+
+<div align="center">_Above: the NFT page_</div>
+
+## Tools
+
+I built XLR8 with this stack:
+
+1. Solidity
+2. MongoDB
+3. AWS Lambda
+4. AWS EC2
+5. Docker
+6. Chainlink
+
+<div align="center">_Below: full car smart contract for XLR8 cars_</div>
+```c
+
+// SPDX-License-Identifier: MIT
+// File: Car.sol -- Full Car contract for XLR8
+pragma solidity ^0.8.10;
+
+import '@openzeppelin/contracts/token/ERC721/ERC721.sol'
+import '@openzeppelin/contracts/access/Ownable.sol'
+import '@openzeppelin/contracts/utils/Counters.sol'
+import '@openzeppelin/contracts/utils/Strings.sol'
+
+// Deploy first, before the xlr8 minter contract address
+contract ComponentNFT is ERC721, Ownable {
+using Counters for Counters.Counter;
+Counters.Counter private \_tokenIds;
+using Strings for uint256;
+
+    address public XLR8Minter;
+    address public Car;
+    uint256 public maxSupply;
+
+    string public baseURI;
+    uint256 public offset = 0;
+
+    string public constant PROVENANCE = ""; // Hardcode this at launch
+
+    event NFTCreated (
+        uint256 indexed tokenId,
+        address indexed creatorAddress
+    );
+
+    constructor(uint256 _maxSupply) ERC721("REPLACE ME WITH NAME", "REPLACE ME WITH TICKER") {
+        maxSupply = _maxSupply;
+        baseURI = "Pre-reveal mystery URI here"; // Pre-reveal mystery URI
+    }
+
+    function setCarContractAddress(address _address) public onlyOwner {
+        Car = _address;
+        setApprovalForAll(Car, true); // Allows car fusing function to call transferFrom
+    }
+
+    function setXLR8MinterAddress(address _address) public onlyOwner {
+        XLR8Minter = _address;
+    }
+
+    modifier onlyMinter() {
+        require(msg.sender == XLR8Minter, "Only the XLR8 Minter contract can mint components");
+        _;
+    }
+
+    function mintFromMinter(address _msgSender) public onlyMinter returns (bool) {
+        _tokenIds.increment();
+        uint _tokenId = _tokenIds.current();
+        require(_tokenId < maxSupply, "Max supply already reached");
+
+        _safeMint(_msgSender, _tokenId);
+        emit NFTCreated(_tokenId, _msgSender);
+
+        return true;
+    }
+
+    // Credit to Vox Collectibles team for this offset method
+    function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
+        if (offset == 0) {
+            return bytes(baseURI).length > 0 ? baseURI : "";
+        } else {
+            uint256 newId = (tokenId + offset) % maxSupply;
+            return bytes(baseURI).length > 0 ? string(abi.encodePacked(baseURI, newId.toString())) : "";
+        }
+    }
+
+    // Must discuss with harkness team if we want this to be a 1 time thing
+    function setBaseURI(string calldata _baseURI) internal onlyOwner {
+        baseURI = _baseURI;
+    }
+
+    function setOffset(uint256 _offset) public onlyMinter {
+        offset = _offset;
+    }
+
+}

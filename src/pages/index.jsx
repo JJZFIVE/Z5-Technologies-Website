@@ -90,7 +90,8 @@ function Project({ project }) {
         {project.title}
       </Card.Title>
       <Card.Eyebrow as="time" dateTime={project.date} decorate>
-        {formatDate(project.date)}
+        {/* {formatDate(project.date)} */}
+        {project.date}
       </Card.Eyebrow>
       <Card.Description>{project.description}</Card.Description>
       <Card.Cta>Learn More</Card.Cta>
@@ -175,7 +176,7 @@ function Resume() {
       title: 'Data Science Engineer',
       logo: rspctbasketball,
       time: 'Wi 2021 - Sp 2022',
-      link: 'https://twitter.com/rspctbasketball',
+      link: 'https://www.rspctbasketball.com/',
     },
     {
       company: 'Right-Hear',

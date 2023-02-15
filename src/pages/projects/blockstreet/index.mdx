@@ -1,0 +1,71 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+import blockstHomepage from './blockstHomepage.jpg'
+import blockstNftPage from './blockstNftPage.jpg'
+import blockstreetExplore from './blockstreetExplore.jpg'
+
+export const meta = {
+  author: 'Joe Zakielarz',
+  date: 'Summer 2022',
+  dateForOrdering: '2022-08-01',
+  title: 'BlockStreet: Multichain NFT Marketplace',
+  description:
+    'Solo built an NFT Marketplace on Ethereum and Polygon with social functionality; zero-code, full collection minting with metadata pinned on IPFS; wallet aggregation and user account creation; and auctions, listings, transfers, burns, and more.',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+Last summer, I slept on my friend's inflatable couch in Miami and worked all day every day on BlockStreet. It's an NFT Marketplace on Ethereum and Polygon with social functionality; zero-code, full collection minting with metadata pinned on IPFS; wallet aggregation and user account creation; and auctions, listings, transfers, burns, and more.
+
+<a
+  target="_blank"
+  rel="noreferrer"
+  href="https://degen-marketplace.vercel.app/"
+>
+  Check it out
+</a>
+
+_Note: the backend is down, but the frontend is still up_
+
+<Image src={blockstHomepage} alt="BlockStreet homepage" draggable={false} />
+<div align="center">_Above: the homepage_</div>
+
+## Features
+
+I can't actually go into that much detail about how I built BlockStreet because it's currently being sold for an
+undisclosed amount, but I can tell you about some of the features. BlockStreet offers all of the standard operations
+you'd expect on any marketplace – transferring, auctioning, bidding, listing, buying, burning, etc.
+It includes the easiest way to launch a collection I've ever seen, which is a huge deal for artists and collectors:
+there's no code required, and the metadata is pinned on IPFS. You can make a BlockStreet account with any one of over five
+crypto wallets (ex: Metamask) and you can connect as many as you want to that account. You can follow other BlockStreet users
+and see their collections and activity on the Instagram-style following feed.
+
+<Image src={blockstNftPage} alt="BlockStreet NFT page" draggable={false} />
+<div align="center">_Above: the NFT page_</div>
+
+## Tools
+
+I built BlockStreet with this stack:
+
+Frontend:
+
+1. NextJS
+2. TailwindCSS
+3. Ethers.js
+4. Rarible SDK
+5. Axios
+
+Backend:
+
+1. ExpressJS
+2. MongoDB
+3. Azure Blob Service
+4. Azure App Service
+5. IPFS
+
+<Image
+  src={blockstreetExplore}
+  alt="BlockStreet explore page"
+  draggable={false}
+/>
+<div align="center">_Above: the explore and trending page_</div>
