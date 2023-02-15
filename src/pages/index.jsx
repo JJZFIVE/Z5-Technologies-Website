@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import clsx from 'clsx'
@@ -236,13 +235,6 @@ function Photos() {
 export default function Home({ projects }) {
   return (
     <>
-      <Head>
-        <title>Joe Zakielarz</title>
-        <meta
-          name="description"
-          content="I'm Joe, and I'm a software engineer in my junior year at Duke University. I'm a hustler and a grinder and love building B2C products."
-        />
-      </Head>
       <Container className="mt-9">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-700 dark:text-zinc-300 sm:text-5xl">

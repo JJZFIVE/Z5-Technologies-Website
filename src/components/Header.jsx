@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Popover, Transition } from '@headlessui/react'
 import clsx from 'clsx'
+import Head from 'next/head'
 
 import { Container } from '@/components/Container'
 import avatarImage from '@/images/avatar.jpg'
@@ -348,6 +349,14 @@ export function Header() {
 
   return (
     <>
+      <Head>
+        <title>Joe Zakielarz</title>
+        <link rel="icon" href="/avatar.png" />
+        <meta
+          name="description"
+          content="I'm Joe, and I'm a software engineer in my junior year at Duke University. I'm a hustler and a grinder and love building B2C products."
+        />
+      </Head>
       <header
         className="pointer-events-none relative z-50 flex flex-col"
         style={{
