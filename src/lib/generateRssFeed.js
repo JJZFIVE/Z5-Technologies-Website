@@ -34,6 +34,7 @@ export async function generateRssFeed() {
     )
 
     feed.addItem({
+      header: project.header,
       title: project.title,
       id: url,
       link: url,
@@ -41,7 +42,7 @@ export async function generateRssFeed() {
       content: html,
       author: [author],
       contributor: [author],
-      date: new Date(project.date),
+      date: new Date(project.dateForOrdering),
     })
   }
 

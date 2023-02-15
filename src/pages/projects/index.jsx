@@ -7,7 +7,7 @@ import { getAllProjects } from '@/lib/getAllProjects'
 
 function Project({ project }) {
   return (
-    <project className="md:grid md:grid-cols-4 md:items-baseline">
+    <article className="md:grid md:grid-cols-4 md:items-baseline">
       <Card className="md:col-span-3">
         <Card.Title href={`/projects/${project.slug}`}>
           {project.title}
@@ -32,7 +32,7 @@ function Project({ project }) {
         {/* {formatDate(project.date)} */}
         {project.date}
       </Card.Eyebrow>
-    </project>
+    </article>
   )
 }
 
