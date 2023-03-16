@@ -119,15 +119,15 @@ function BetaTest() {
         <span className="ml-3 text-sm">Beta test my newest product!</span>
       </h2>
       <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-        I&apos;m hacking away at a new product that I&apos;m currently calling
-        FitScript. It&apos;s a personal fitness trainer powered by AI that lives
-        right in your text messages. I&apos;d love to get your feedback on it!
+        I&apos;m hacking away at a new product called KovoAI. It&apos;s a
+        personal fitness trainer powered by AI that lives right in your text
+        messages. I&apos;d love to get your feedback on it!
       </p>
       <div className="text w-full pt-4 text-sm">
         <a
           target="_blank"
           rel="noreferrer"
-          href="https://fit-script-website.vercel.app/"
+          href="https://www.kovoai.com"
           className="text-black underline dark:text-white"
         >
           Find The Website Here!
