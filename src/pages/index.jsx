@@ -281,7 +281,7 @@ export default function Home({ projects }) {
               icon={SoundCloudIcon}
             />
             <SocialLink
-              href="https://drive.google.com/file/d/1TvkfPbD7HpFMhrZXKPborc9grKwUdOXU/view?usp=sharing"
+              href="https://drive.google.com/file/d/1dJU8D5DUuiwtzdFq1D6gAXBwsafsKL9i/view?usp=sharing"
               aria-label="See my Resume"
               icon={ResumeIconHome}
             />
