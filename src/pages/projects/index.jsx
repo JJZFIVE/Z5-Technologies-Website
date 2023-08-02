@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import { getAllProjects } from '@/lib/getAllProjects'

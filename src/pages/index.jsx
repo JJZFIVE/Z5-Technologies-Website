@@ -9,10 +9,12 @@ import {
   SoundCloudIcon,
   LinkedInIcon,
   TwitterIcon,
+  ResumeIconHome,
 } from '@/components/SocialIcons'
 import rightHear from '@/images/logos/righthear.png'
 import rspctbasketball from '@/images/logos/rspctbasketball.png'
 import ozura from '@/images/logos/ozura.png'
+import memAi from '@/images/logos/mem-ai.jpg'
 import image1 from '@/images/photos/image-1.jpg'
 import image2 from '@/images/photos/image-2.jpg'
 import image3 from '@/images/photos/image-3.jpg'
@@ -77,7 +79,7 @@ function Project({ project }) {
 function SocialLink({ icon: Icon, ...props }) {
   return (
     <Link className="group -m-1 p-1" {...props}>
-      <Icon className="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300" />
+      <Icon className="h-6 w-6 fill-zinc-500  transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300" />
     </Link>
   )
 }
@@ -116,12 +118,14 @@ function BetaTest() {
     <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
         <BeakerIcon className="h-6 w-6 text-gray-400" />
-        <span className="ml-3 text-sm">Beta test my newest product!</span>
+        <span className="ml-3 text-sm">Look out for KovoAI</span>
       </h2>
       <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-        I&apos;m hacking away at a new product called KovoAI. It&apos;s a
-        personal fitness trainer powered by AI that lives right in your text
-        messages. I&apos;d love to get your feedback on it!
+        I&apos;m hacking away at a KovoAI, an AI personal fitness trainer that
+        learns about you over time. I&apos;m applying my new prooompt
+        engineering skills I learned at Mem.Ai, and I&apos;m teaching myself
+        PyTorch & SciKit Learn to provide fine-tuned personalization to work
+        with your workout preferences and injuries.
       </p>
       <div className="text w-full pt-4 text-sm">
         <a
@@ -139,6 +143,13 @@ function BetaTest() {
 
 function Resume() {
   let resume = [
+    {
+      company: 'Mem.Ai',
+      title: 'Software Engineer',
+      logo: memAi,
+      time: 'Su 2023',
+      link: 'https://get.mem.ai',
+    },
     {
       company: 'Ozura',
       title: 'Software / Blockchain Engineer',
@@ -241,13 +252,12 @@ export default function Home({ projects }) {
             <span className="text-zinc-900 dark:text-zinc-100">
               Joe Zakielarz:
             </span>{' '}
-            Software engineer, future founder, and music producer.
+            Software engineer, mechanical engineer, co-founder of $100k/yr LLC
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I&apos;m Joe, and I&apos;m a software engineer in my junior year at
-            Duke University. I love building B2C products and am currently
-            looking to make an impact in a fast-paced environment during the
-            Summer of 2023.
+            I&apos;m Joe, and I&apos;m a software engineer and mechanical
+            engineer in my senior year at Duke University. I love building B2C
+            products and am recruiting for post-grad SWE opportunities.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
@@ -269,6 +279,11 @@ export default function Home({ projects }) {
               href="https://soundcloud.com/intrynzic/tracks"
               aria-label="Follow on SoundCloud"
               icon={SoundCloudIcon}
+            />
+            <SocialLink
+              href="https://drive.google.com/file/d/1TvkfPbD7HpFMhrZXKPborc9grKwUdOXU/view?usp=sharing"
+              aria-label="See my Resume"
+              icon={ResumeIconHome}
             />
           </div>
         </div>

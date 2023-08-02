@@ -1,0 +1,124 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+import memChromeExtension from './mem-chrome-extension.png'
+import coffeeMem from './coffee-mem.jpg'
+
+export const meta = {
+  author: 'Joe Zakielarz',
+  date: 'Summer 2023',
+  dateForOrdering: '2023-06-01',
+  header: 'Mem.Ai',
+  title: 'Mem.Ai: Summer 2023 Internship',
+  description:
+    'Built chrome extension, AI meeting briefing tool, and Chat Suggestions for Mem.Ai, an OpenAI & a16z backed Series A startup',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+## Overview
+
+_Thank you to the kind folks who run <a target="\_blank" rel="noreferrer" href="https://neo.com/" style={{ color: "#bdbdbd" }}>Neo Startup Connect</a>, who connected me to Mem_
+
+<a target="_blank" rel="noreferrer" href="https://get.mem.ai">
+  Here's more information about Mem.Ai
+</a>
+
+Over the summer of 2023, I interned for Mem.Ai in San Francisco as a software engineer. My internship had a healthy mix of autonomy over my own projects and filling tickets.
+I was present for most engineering and product meetings, and learned as much as quickly as possible. Here's a list overview of my contributions:
+
+- Solo-built Chrome extension to add Mem to normal browser workflow. Built with React, TailwindCSS, Figma. Deployed 2 serverless AWS Lambda functions for summarizing page contents with ChatGPT
+- Solo-built AI meeting briefing tool with MobX, GraphQL, Elastic Search, Pinecone, and OpenAI Whisper. Designed proprietary “query rewriter” to improve search results, and cross-encoder to fact check search results with GPT4
+- Designed and deployed “Chat Suggestions” when viewing note in workspace. Mixpanel tracking indicated hundreds of uses by users within just a few weeks of launch. Built with Redis, GraphQL, GPT4, prompt engineering magic
+- The small things: web mobile bugfixes, general css tweaks, and brought lots of coffee :)
+
+## Chrome Extension
+
+<a
+  target="_blank"
+  rel="noreferrer"
+  href="https://github.com/JJZFIVE/MemAIChromeExtension"
+>
+  Here's the extension's GitHub repository (MIT license)
+</a>
+
+My chrome extension was the first part of my application to Mem. I built it in less than a week, and the team loved it enough to
+make plans to incorporate it into Mem's product line. The extension allows you to make a Mem (add a note to your workspace) of a website or website contents.
+For example, if you're reading an interesting article from TechCrunch and want to add its contents to your "knowledge base" or save it for later, the extension allows you to do that.
+It also has a Summarize Contents button, which summarizes the page contents with ChatGPT, which is hosted on an AWS Lambda instance to protect my OpenAI API keys.
+
+Technologies used:
+
+1. React
+1. TailwindCSS
+1. Typescript
+1. Figma
+
+<iframe
+  style={{ border: '1px solid rgba(0, 0, 0, 0.1)' }}
+  width="800"
+  height="450"
+  src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FBcrF1zw1ASIIShQtK1FiOi%2FMemAI-Chrome-Extension%3Ftype%3Ddesign%26node-id%3D0%253A1%26mode%3Ddesign%26t%3D0EflZycjn3iWWeDV-1"
+  allowfullscreen
+></iframe>
+<div align="center">_Above: Figma for the chrome extension_</div>
+
+<div style={{ display: 'flex', justifyContent: 'center' }}>
+  <Image
+    src={memChromeExtension}
+    alt="Mem Chrome Extension"
+    draggable={false}
+    height="600"
+  />
+</div>
+<div align="center">_Above: my chrome extension_</div>
+
+## "Brief Me" - AI Meeting Briefing Tool
+
+After shipping "Chat Suggestions" (info below) within my first two weeks, the executive team gave me my next project to work on: "find out
+if Mem can provide value in meeting briefings." I spent the first week identifying the problem to solve and building up from there. To do this,
+I randomized a thousand random calendar events from our users and wrote a Python script and categorized these calendar events along two axes with GPT4:
+daily vs. weekly vs. monthly vs. standalone, and 1:1 vs. group. My hypothesis was that AI meeting briefings would be most useful for standlone and infrequent meetings,
+as it'd be easy to forget their purpose, whom you're meeting with, and what you're supposed to bring to the meetings. I presented my pie charts and we decided it
+was promising enough to continue with the meeting briefing project.
+
+Over the next couple of weeks, I prototyped and "dogfooded" (internally tested) an alpha and beta version of this tool. For an upcoming meeting in your
+calendar, it first rewrites the query to expand search capabilities with GPT4. For example, it the meeting is "weekly community notes standup," it would generate
+extra searches such as "my work on the community notes this week," "previous week's community notes standup meeting notes", and "what is the purpose of the weekly community notes standup."
+Then, it would perform a vector search and keyword search with Pinecone DB and Elastic Search to find the most relevant emails, notes (called mems), and would perform Google searches if it determined necessary
+to ascertain who a specific person or topic is.
+
+Technologies used:
+
+1. Python, Seaborn, Pandas
+1. OpenAI Whisper
+1. React
+1. MobX & Redux
+1. GraphQL
+1. Elastic Search
+1. Pinecone DB
+1. Typescript
+1. Firebase
+
+## Chat Suggestions
+
+Mem's core functionality revolves around Chat, which is ChatGPT + your data saved in Mem. I built a card that automatically generates Chat Suggestions
+when you're viewing a note based on the note's contents. This was my first project, and I built it in two weeks that also included my onboarding.
+
+Technologies used:
+
+1. GPT4
+1. React
+1. MobX & Redux
+1. GraphQL
+1. Redis
+1. Typescript
+
+## The Small things
+
+I filled plenty of tickets in my time at Mem. I took temporary ownership of web mobile and fixed plenty of css issues for the responsive format.
+
+Lastly, I got plenty of coffee :)
+
+<div style={{ display: 'flex', justifyContent: 'center' }}>
+  <Image src={coffeeMem} alt="Lots of coffee" draggable={false} height="600" />
+</div>

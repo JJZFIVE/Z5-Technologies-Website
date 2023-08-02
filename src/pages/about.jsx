@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import Image from 'next/image'
 import clsx from 'clsx'
 import Link from 'next/link'
@@ -9,8 +8,10 @@ import {
   SoundCloudIcon,
   LinkedInIcon,
   TwitterIcon,
+  ResumeIconAbout,
 } from '@/components/SocialIcons'
 import portraitImage from '@/images/portrait.jpg'
+import waterfallPortrait from '@/images/waterfallPortrait.jpg'
 
 function SocialLink({ className, href, children, icon: Icon }) {
   return (
@@ -20,7 +21,7 @@ function SocialLink({ className, href, children, icon: Icon }) {
         className={`group flex text-sm font-medium text-zinc-800 transition hover:text-blue-500 dark:text-zinc-200 `}
       >
         <Icon className="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-blue-500" />
-        <span className="ml-4">{children}</span>
+        <span className="ml-4 group-hover:text-blue-500">{children}</span>
       </Link>
     </li>
   )
@@ -44,8 +45,8 @@ export default function About() {
         <div className="lg:pl-20">
           <div className="mx-auto max-w-xs px-2.5 lg:mx-0 lg:max-w-none">
             <Image
-              src={portraitImage}
-              alt=""
+              src={waterfallPortrait}
+              alt="Me"
               draggable={false}
               sizes="(min-width: 1024px) 32rem, 20rem"
               className="aspect-square -rotate-2 rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800"
@@ -54,11 +55,11 @@ export default function About() {
         </div>
         <div className="lg:order-first lg:row-span-2">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-            Hi! I&apos;m Joe. I make things.
+            Hi! I&apos;m Joe.
           </h1>
           <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
             <p>
-              I&apos;m a junior at Duke University majoring in Mechanical
+              I&apos;m a senior at Duke University majoring in Mechanical
               Engineering and minoring in Computer Science. I simply love
               learning and building things, and often I infuse my sense of humor
               into my projects.
@@ -69,6 +70,17 @@ export default function About() {
               tap the screen to &quot;diffuse&quot; bombs falling from every
               edge of your phone. Since then, my skills have (somewhat)
               improved... but the same eager curiosity has remained.
+            </p>
+            <p>
+              I did a software internship at Mem.Ai over the summer of 2023,
+              where I worked on plenty of{' '}
+              <Link href="/projects/mem-ai" legacyBehavior>
+                <a className="text-zinc-700 underline dark:text-zinc-300">
+                  cool projects
+                </a>
+              </Link>{' '}
+              and developed my fullstack, product, and prooompt engineering
+              skills.
             </p>
             <p>
               I spent the summer of 2022 working in Miami building an NFT
@@ -95,17 +107,18 @@ export default function About() {
               processing and the intersection of music and technology. Feel free
               to check out some of my stuff if you have a free second!
             </p>
-            <p>
-              I&apos;m currently looking for an internship for Summer 2023. The
-              metric I&apos;m optimizing for is skill development and learning
-              potential. I&apos;d greatly appreciate any leads or any advice you
-              have to offer! Feel free to shoot me an email or connect with me
-              on LinkedIn.
-            </p>
           </div>
         </div>
         <div className="lg:pl-20">
           <ul role="list">
+            <SocialLink
+              href="https://drive.google.com/file/d/1TvkfPbD7HpFMhrZXKPborc9grKwUdOXU/view?usp=sharing"
+              aria-label="Resume"
+              icon={ResumeIconAbout}
+              className="py-1"
+            >
+              Resume
+            </SocialLink>
             <SocialLink
               href="https://github.com/JJZFIVE"
               aria-label="Follow on GitHub"
@@ -121,7 +134,7 @@ export default function About() {
               icon={TwitterIcon}
               className="py-1"
             >
-              Twitter
+              Twitter / X
             </SocialLink>
 
             <SocialLink
