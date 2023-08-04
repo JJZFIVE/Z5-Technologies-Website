@@ -255,15 +255,20 @@ export default function Home({ projects }) {
             Software engineer, mechanical engineer, co-founder of $100k/yr LLC
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I&apos;m Joe, and I&apos;m a software engineer and mechanical
-            engineer in my senior year at Duke University. I love building B2C
-            products and am recruiting for post-grad SWE opportunities.
+            I&apos;m a software engineer majoring in mechanical engineering in
+            my senior year at Duke University. I love building B2C products and
+            am recruiting for post-grad SWE opportunities.
           </p>
           <div className="mt-6 flex gap-6">
-            <SocialLink
+            {/* <SocialLink
               href="https://twitter.com/joezakielarz"
               aria-label="Follow on Twitter"
               icon={TwitterIcon}
+            /> */}
+            <SocialLink
+              href="https://drive.google.com/file/d/1dJU8D5DUuiwtzdFq1D6gAXBwsafsKL9i/view?usp=sharing"
+              aria-label="See my Resume"
+              icon={ResumeIconHome}
             />
             <SocialLink
               href="https://github.com/JJZFIVE"
@@ -275,16 +280,11 @@ export default function Home({ projects }) {
               aria-label="Follow on LinkedIn"
               icon={LinkedInIcon}
             />
-            <SocialLink
+            {/* <SocialLink
               href="https://soundcloud.com/intrynzic/tracks"
               aria-label="Follow on SoundCloud"
               icon={SoundCloudIcon}
-            />
-            <SocialLink
-              href="https://drive.google.com/file/d/1dJU8D5DUuiwtzdFq1D6gAXBwsafsKL9i/view?usp=sharing"
-              aria-label="See my Resume"
-              icon={ResumeIconHome}
-            />
+            /> */}
           </div>
         </div>
       </Container>

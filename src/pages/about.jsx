@@ -11,7 +11,7 @@ import {
   ResumeIconAbout,
 } from '@/components/SocialIcons'
 import portraitImage from '@/images/portrait.jpg'
-import waterfallPortrait from '@/images/waterfallPortrait.jpg'
+import greenHeadshot from '@/images/greenHeadshot.jpg'
 
 function SocialLink({ className, href, children, icon: Icon }) {
   return (
@@ -45,7 +45,7 @@ export default function About() {
         <div className="lg:pl-20">
           <div className="mx-auto max-w-xs px-2.5 lg:mx-0 lg:max-w-none">
             <Image
-              src={waterfallPortrait}
+              src={greenHeadshot}
               alt="Me"
               draggable={false}
               sizes="(min-width: 1024px) 32rem, 20rem"
@@ -55,7 +55,7 @@ export default function About() {
         </div>
         <div className="lg:order-first lg:row-span-2">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-            Hi! I&apos;m Joe.
+            About me
           </h1>
           <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
             <p>
@@ -72,8 +72,8 @@ export default function About() {
               improved... but the same eager curiosity has remained.
             </p>
             <p>
-              I did a software internship at Mem.Ai over the summer of 2023,
-              where I worked on plenty of{' '}
+              I interned at Mem.Ai over the summer of 2023, where I worked on
+              plenty of{' '}
               <Link href="/projects/mem-ai" legacyBehavior>
                 <a className="text-zinc-700 underline dark:text-zinc-300">
                   cool projects
@@ -93,8 +93,8 @@ export default function About() {
               and learned a ton about the blockchain space.
             </p>
             <p>
-              I&apos;ve been making and releasing electronic music and remixes
-              under the stage name{' '}
+              For fun, I&apos;ve been making and releasing electronic music and
+              remixes under the stage name{' '}
               <a
                 className="text-zinc-700 underline dark:text-zinc-300"
                 href="https://soundcloud.com/intrynzic/tracks"
@@ -105,7 +105,7 @@ export default function About() {
               </a>{' '}
               since high school. I&apos;m fascinated with digital signal
               processing and the intersection of music and technology. Feel free
-              to check out some of my stuff if you have a free second!
+              to check out some of my music if you have a free second!
             </p>
           </div>
         </div>
@@ -128,14 +128,14 @@ export default function About() {
               GitHub
             </SocialLink>
 
-            <SocialLink
+            {/* <SocialLink
               href="https://twitter.com/joezakielarz"
               aria-label="Follow on Twitter"
               icon={TwitterIcon}
               className="py-1"
             >
               Twitter / X
-            </SocialLink>
+            </SocialLink> */}
 
             <SocialLink
               href="https://www.linkedin.com/in/joezakielarz5"
