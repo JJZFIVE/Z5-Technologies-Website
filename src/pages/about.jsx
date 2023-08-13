@@ -61,15 +61,12 @@ export default function About() {
             <p>
               I&apos;m a senior at Duke University majoring in Mechanical
               Engineering and minoring in Computer Science. I simply love
-              learning and building things, and often I infuse my sense of humor
-              into my projects.
-            </p>
-            <p>
-              I&apos;ve been hooked on writing software since I built my first
-              iPhone app in 5th grade called Bomb Blitz where the goal was to
-              tap the screen to &quot;diffuse&quot; bombs falling from every
-              edge of your phone. Since then, my skills have (somewhat)
-              improved... but the same eager curiosity has remained.
+              learning and building things. I&apos;ve been hooked on writing
+              software since I built my first iPhone app in 5th grade called
+              Bomb Blitz where the goal was to tap the screen to
+              &quot;diffuse&quot; bombs falling from every edge of your phone.
+              Since then, my skills have improved, but the same eager curiosity
+              has remained.
             </p>
             <p>
               I interned at Mem.Ai over the summer of 2023, where I worked on
@@ -104,8 +101,7 @@ export default function About() {
                 Intrynzic
               </a>{' '}
               since high school. I&apos;m fascinated with digital signal
-              processing and the intersection of music and technology. Feel free
-              to check out some of my music if you have a free second!
+              processing and the intersection of music and technology.
             </p>
           </div>
         </div>
