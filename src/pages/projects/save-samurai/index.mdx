@@ -1,0 +1,88 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+import main from './main.png'
+import home from './home.png'
+import working from './working.png'
+import Link from 'next/link'
+
+export const meta = {
+  author: 'Joe Zakielarz',
+  date: 'Fall 2023',
+  dateForOrdering: '2023-08-01',
+  header: 'Save Samurai',
+  title: 'Save Samurai: HackDuke 2023 Winner (Finance Track)',
+  description:
+    'Hackathon project that uses GPT4 to analyze credit card spending history and give recommendations for spending cuts. Generates written report and graphs of optimal spending by category. "Slash your spendings!"',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+<a
+  target="_blank"
+  rel="noreferrer"
+  href="https://devpost.com/software/save-samurai"
+>
+  Here's the Devpost with our submission
+</a>
+
+## Inspiration
+
+22% of Americans have no emergency savings, 30% have less than 3 months of savings, and 18% have 3-5 months of savings, meaning 70% of Americans have less than 5 months of emergency savings.
+One reason might be that Americans in this demographic lack an understanding of their spending habits and how they can cut back on spending without cutting back on quality of living. We set out to built a tool to help these people increase savings in a personalized and informed way.
+
+## What is SaveSamurai
+
+My friend, Adar Schwarzbach, and I built a financial tool that analyzes your credit/debit card spending history, creates visualizations and insights around your spending history, and generates a written spending report that you can chat with as you might a wealth advisor.
+Adar built the frontend, and I built the backend. I used my new prompt engineering skills I learned from my <Link href={"/projects/mem-ai"}>internship at Mem.Ai</Link> the previous summer. At a high level, it first categorizes the data into 10 predefined categories,
+and then runs that through the "Savings Processor", which picks out extraneous spends. It then formats the processed data correctly for the graphs on the frontend and generates a written report.
+
+<a
+  target="_blank"
+  rel="noreferrer"
+  href="https://www.linkedin.com/in/adarschwarzbach"
+>
+  Adar's LinkedIn
+</a>
+
+<Image src={main} alt="The main report page" draggable={false} />
+<div align="center">_Above: The main page with the report_</div>
+
+## Learnings and Takeaways
+
+I learned a lot about how to build simple NLP pipelines and handle global state on the client when switching between pages. It was great full stack practice, as I also learned a lot about how to use Typescript typings to facilitate easy data transfer between client and server.
+The biggest challenges we ran into were correctly pre-processing the statistics before passing them into the main report generator. Often these preprocessing steps would error out, hit weird edge cases, completely misclassify or miscalculate data, all of which was frustrating to deal with.
+Sometimes these preprocessing steps still fail, in which case you should try redo-ing the generation.
+
+<Image src={home} alt="The landing page" draggable={false} />
+<div align="center">
+  _Above: The landing page. Select from our example personas or upload your own
+  CSV_
+</div>
+
+## Tools
+
+We built SaveSamurai with these tools:
+
+Frontend:
+
+1. NextJS
+2. TailwindCSS
+3. Palantir Blueprint
+4. Airbnb Visx
+5. Axios
+6. Typescript
+7. Papaparse
+
+Backend:
+
+1. NextJS serverless
+2. OpenAI
+3. Js-Yaml
+4. Typescript
+
+<Image src={working} alt="Us working" draggable={false} />
+<div align="center">
+  _Above: Adar (right) and I (left) working diligently late into the night_
+</div>
+
+_We built SaveSamurai in one day, specifically in two consecutive sittings, delimited by a brief Chipotle run_
