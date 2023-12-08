@@ -118,16 +118,12 @@ function BetaTest() {
     <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
         <BeakerIcon className="h-6 w-6 text-gray-400" />
-        <span className="ml-3 text-sm">Look out for KovoAI</span>
+        <span className="ml-3 text-sm">Look out for Kovo Fitness</span>
       </h2>
       <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-        I&apos;m hacking away at a KovoAI, an AI personal fitness trainer that
-        learns about you over time. I&apos;m applying my new prooompt
-        engineering skills I learned at Mem.Ai, and I&apos;m teaching myself
-        PyTorch & SciKit Learn to provide fine-tuned personalization to work
-        with your workout preferences and injuries.
+        Building... more to come in Jan 2024!
       </p>
-      <div className="text w-full pt-4 text-sm">
+      {/* <div className="text w-full pt-4 text-sm">
         <a
           target="_blank"
           rel="noreferrer"
@@ -136,7 +132,7 @@ function BetaTest() {
         >
           Find The Website Here!
         </a>
-      </div>
+      </div> */}
     </div>
   )
 }
