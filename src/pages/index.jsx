@@ -313,9 +313,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      projects: (await getAllProjects())
-        .slice(0, 4)
-        .map(({ component, ...meta }) => meta),
+      projects: (await getAllProjects()).map(({ component, ...meta }) => meta),
     },
   }
 }
