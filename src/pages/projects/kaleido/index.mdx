@@ -1,0 +1,98 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+import kaleidoLogo from './icon.png'
+import extension from './extension.png'
+import ingestionPipeline from './ingestionPipeline.png'
+import searchAlgorithm from './searchAlgorithm.png'
+
+export const meta = {
+  author: 'Joe Zakielarz',
+  date: 'Winter 2024',
+  dateForOrdering: '2024-01-01',
+  header: 'Kaleido',
+  title: 'Kaleido: TreeHacks Hackathon Category Winner',
+  description:
+    'TreeHacks Winner of “InterSystems: Best Use of GenAI.” Chrome extension, highlights bias in news articles relative to semantically similar articles.',
+}
+
+
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+
+<div style={{ display: 'flex', justifyContent: 'center' }}>
+  <Image src={extension} alt="Lots of coffee" draggable={false} height="500" />
+</div>
+
+## Overview
+
+I participated in Stanford's TreeHacks hackathon my senior year of college. I joined a team with Austin Chen and Braden Wong, who are both very talented fullstack engineers. 
+We created Kaleido, a Chrome extension that uses open source NLP bias calculators to highlight and expose bias between different news sites.
+
+<a
+  target="_blank"
+  rel="noreferrer"
+  href="https://devpost.com/software/insight-critter"
+>
+  View Devpost
+</a>
+
+<a
+  target="_blank"
+  rel="noreferrer"
+  href="https://github.com/JJZFIVE/Kaleido"
+>
+  GitHub repo
+</a>
+
+## Inspiration
+
+In a world saturated with information and misinformation, the upcoming 2024 presidential election stands as a testament to our need for clarity and truth. This is where Kaleido steps in. Inspired by the vision of bringing light to the unseen, our mission goes beyond merely summarizing news content. We dive deeper, revealing not just what you're reading, but also what you're missing out on. Additionally, by assessing bias and sentiment across related articles, Kaleido provides a fuller, more balanced view of every story 📚.
+
+Our approach is grounded in the belief that understanding the full spectrum of information is crucial in navigating the complexities of today's world. Kaleido is not just a tool; it's a movement towards informed, critical thinking and a beacon for those who seek to understand beyond the surface 🚀.
+
+## What Kaleido Does
+
+Kaleido is a Chrome extension designed to seamlessly integrate into your browsing and reading experience. It works in the background as you explore news articles, leveraging vector embedding search technology to analyze the content of your current article. After identifying similar articles discovered by other users through embeddings, Kaleido offers a unique comparative analysis of the article at hand.
+
+The core functionality of Kaleido is twofold:
+
+1. Comparative Analysis: Kaleido enables users to compare the bias and sentiment of the current article with a wide array of other similar articles identified by its vector embedding search. This feature allows for an in-depth understanding of where the article stands, in bias and sentiment, within a broader spectrum of perspectives and analyses 📊.
+1. Idea Aggregation and Analysis: The second key feature distills the essence of an article into multiple points or ideas, and each point is then embedded in vector space. This process constructs a vast network or a "superset" of ideas shared across articles, identified as clusters of similar thoughts in the vector-embedded space. Through this approach, Kaleido surfaces significant, overarching takeaways from these groups of articles, offering a comprehensive view that goes beyond the surface level 🔍.
+
+Additionally, Kaleido aggregates crucial insights by comparing the focal points of an article against others, enriching the user's understanding with enhanced data on embeddings, sentiment, and bias. This not only broadens the perspective of readers but also deepens their engagement with content, fostering a more informed and critical approach to information consumption 🌐.
+
+## How it works
+
+1. When a user with the extension installed views a news article (whitelisted domains), they have the option to use the extension to parse the article and add to our database
+1. Our article ingestion pipeline API uses an LLM to extract key topics from the pipeline based on heuristics given in natural language. Those topics are then embedded and clustered. Then, we use the LLM to summarize the clusters into one sentence each, which we then embed and store in the InterSystems database.
+1. When a user views a news article that someone else has already added with the extension, it uses our search algorithm: vector search the InterSystems DB for semantically similar articles, then gather the individual topics from each article, and use embedding clustering to create a set of topics across all articles. 
+1. After performing the search algorithm, we use open source HuggingFace sentiment and bias NLP models to highlight differences between the currently viewed article and the other related articles.
+1. There was no time to add caching on the search algorithm, however that would be helpful to reduce database reads and decrease latency.
+
+
+## Technologies used:
+
+1. HuggingFace
+1. BunJS
+1. Plasmo
+1. ShadCN
+1. Figma
+1. TailwindCSS
+1. Intersystems
+1. OpenAI embeddings
+1. ChatGPT API
+
+<div style={{ display: 'flex', justifyContent: 'center' }}>
+  <Image src={ingestionPipeline} alt="Lots of coffee" draggable={false} height="500" />
+</div>
+
+<div style={{ display: 'flex', justifyContent: 'center' }}>
+  <Image src={searchAlgorithm} alt="Lots of coffee" draggable={false} height="500" />
+</div>
+
+<div style={{ display: 'flex', justifyContent: 'center' }}>
+  <Image src={kaleidoLogo} alt="Lots of coffee" draggable={false} height="500" />
+</div>
+
+Logo created with Dall-E :)
