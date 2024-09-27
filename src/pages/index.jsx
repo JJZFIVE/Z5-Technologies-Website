@@ -15,6 +15,7 @@ import rightHear from '@/images/logos/righthear.png'
 import rspctbasketball from '@/images/logos/rspctbasketball.png'
 import ozura from '@/images/logos/ozura.png'
 import memAi from '@/images/logos/mem-ai.jpg'
+import loupt from '@/images/logos/loupt.jpg'
 import image1 from '@/images/photos/image-1.jpg'
 import image2 from '@/images/photos/image-2.jpg'
 import image3 from '@/images/photos/image-3.jpg'
@@ -22,7 +23,7 @@ import image4 from '@/images/photos/image-4.jpg'
 import image5 from '@/images/photos/image-5.jpg'
 import { generateRssFeed } from '@/lib/generateRssFeed'
 import { getAllProjects } from '@/lib/getAllProjects'
-import { BeakerIcon } from '@heroicons/react/24/outline'
+import { CreditCardIcon } from '@heroicons/react/24/outline'
 
 function BriefcaseIcon(props) {
   return (
@@ -117,28 +118,35 @@ function BetaTest() {
   return (
     <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-        <BeakerIcon className="h-6 w-6 text-gray-400" />
-        <span className="ml-3 text-sm">Look out for Kovo Fitness</span>
+        <CreditCardIcon className="h-6 w-6 text-gray-400" />
+        <span className="ml-3 text-sm">I built an SEC & FINRA compliant fintech company!</span>
       </h2>
       <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-        Building... more to come in Jan 2024!
+        As of September 2024, we have $80k of volume invested through the site. More to come!
       </p>
-      {/* <div className="text w-full pt-4 text-sm">
+      <div className="text w-full pt-4 text-sm">
         <a
           target="_blank"
           rel="noreferrer"
-          href="https://www.kovoai.com"
+          href="https://www.loupt.co"
           className="text-black underline dark:text-white"
         >
           Find The Website Here!
         </a>
-      </div> */}
+      </div>
     </div>
   )
 }
 
 function Resume() {
   let resume = [
+    {
+      company: 'Loupt',
+      title: 'CPO & Software Engineer',
+      logo: loupt,
+      time: 'Su 2024',
+      link: 'https://www.loupt.co',
+    },
     {
       company: 'Mem.Ai',
       title: 'Software Engineer',
@@ -152,20 +160,6 @@ function Resume() {
       logo: ozura,
       time: 'Su 2022',
       link: 'https://ozura.io/',
-    },
-    {
-      company: 'RSPCT Basketball',
-      title: 'Data Science Engineer',
-      logo: rspctbasketball,
-      time: 'Wi 2021 - Sp 2022',
-      link: 'https://www.rspctbasketball.com/',
-    },
-    {
-      company: 'Right-Hear',
-      title: 'Strategy Consultant',
-      logo: rightHear,
-      time: 'Sp 2021 - Su 2021',
-      link: 'https://www.right-hear.com/',
     },
   ]
 
@@ -246,14 +240,12 @@ export default function Home({ projects }) {
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-700 dark:text-zinc-300 sm:text-5xl">
             <span className="text-zinc-900 dark:text-zinc-100">
-              Joe Zakielarz:
-            </span>{' '}
-            Software engineer, mechanical engineer, co-founder of $100k/yr LLC
+              Joe Zakielarz
+            </span>
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I&apos;m a software engineer majoring in mechanical engineering in
-            my senior year at Duke University. I love building B2C products and
-            am recruiting for post-grad SWE opportunities.
+            CS & MechE @ Duke, grad May 24. Neo Scholar. Fullstack software engineer. Co-founded FINRA & SEC compliant equity crowdfunding marketplace, co-founded
+            $100k revenue/yr college shipping company, & interned at Series A startup Mem.ai.
           </p>
           <div className="mt-6 flex gap-6">
             {/* <SocialLink
@@ -262,7 +254,7 @@ export default function Home({ projects }) {
               icon={TwitterIcon}
             /> */}
             <SocialLink
-              href="https://drive.google.com/file/d/1dJU8D5DUuiwtzdFq1D6gAXBwsafsKL9i/view?usp=sharing"
+              href="https://drive.google.com/file/d/1V7ODTfpxvxvjtofojGJViSMH3-5TOb6j/view?usp=sharing"
               aria-label="See my Resume"
               icon={ResumeIconHome}
             />
