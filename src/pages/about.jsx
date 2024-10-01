@@ -108,7 +108,7 @@ export default function About() {
         <div className="lg:pl-20">
           <ul role="list">
             <SocialLink
-              href="https://drive.google.com/file/d/1dJU8D5DUuiwtzdFq1D6gAXBwsafsKL9i/view?usp=sharing"
+              href="https://drive.google.com/file/d/1V7ODTfpxvxvjtofojGJViSMH3-5TOb6j/view?usp=sharing"
               aria-label="Resume"
               icon={ResumeIconAbout}
               className="py-1"
