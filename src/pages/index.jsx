@@ -122,7 +122,7 @@ function BetaTest() {
         <span className="ml-3 text-sm">I built an SEC & FINRA compliant fintech company!</span>
       </h2>
       <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-        As of September 2024, we have $80k of volume invested through the site. More to come!
+        As of October 2024, it has $80k of volume invested through the site.
       </p>
       <div className="text w-full pt-4 text-sm">
         <a
@@ -131,7 +131,7 @@ function BetaTest() {
           href="https://www.loupt.co"
           className="text-black underline dark:text-white"
         >
-          Find The Website Here!
+          Find The Website Here
         </a>
       </div>
     </div>
@@ -142,7 +142,7 @@ function Resume() {
   let resume = [
     {
       company: 'Loupt',
-      title: 'CPO & Software Engineer',
+      title: 'CPO & Founding Engineer',
       logo: loupt,
       time: 'Su 2024',
       link: 'https://www.loupt.co',
@@ -254,7 +254,7 @@ export default function Home({ projects }) {
               icon={TwitterIcon}
             /> */}
             <SocialLink
-              href="https://drive.google.com/file/d/1V7ODTfpxvxvjtofojGJViSMH3-5TOb6j/view?usp=sharing"
+              href="https://drive.google.com/file/d/1lCEWfPMfENSMuqy1DIJdR0aaZd8-lBDc/view?usp=sharing"
               aria-label="See my Resume"
               icon={ResumeIconHome}
             />
